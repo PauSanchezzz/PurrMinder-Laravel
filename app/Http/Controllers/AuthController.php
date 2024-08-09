@@ -41,23 +41,6 @@ class AuthController extends Controller
         }
     }
 
-    /*    public function profile(Request $request)
-        {
-            $token = $request->bearerToken();
-
-            if (!$token) {
-                return response()->json(['error' => 'Unauthorized'], 401);
-            }
-
-            try {
-                $user = JWTAuth::parseToken($token)->authenticate();
-            } catch (JWTException $e) {
-                return response()->json(['error' => 'invalid_token'], 401);
-            }
-
-            return response()->json($user);
-        }*/
-
     public function logout()
     {
         auth()->logout();
@@ -91,6 +74,7 @@ class AuthController extends Controller
             'birthDate' => 'required|date',
             'telephoneNumber' => 'required',
             'city_id' => '',
+            'nameShelter' => '',
             'address' => 'required',
             'role_id' => 'required',
             'occupation' => ''
@@ -104,7 +88,7 @@ class AuthController extends Controller
         ));
         return response()->json([
             'message' => 'User successfully registered',
-            'user' => $user,
+            /*'user' => $user,*/
             'status' => 201
         ], 201);
     }

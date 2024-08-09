@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\catsController;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -28,7 +29,14 @@ return Application::configure(basePath: dirname(__DIR__))
             ], function ($router) {
                 Route::post('profile', [AuthController::class, 'profile']);
             });
-
+            Route::group([
+                'middleware' => 'api',
+                'prefix' => 'cats'
+            ], function ($router) {
+                Route::get('catsAdoption', [CatsController::class, 'catsAdoption'])->name('catsAdoption');
+                Route::get('catsAdopted', [CatsController::class, 'catsAdopted'])->name('catsAdopted');
+                Route::post('catRegister', [CatsController::class, 'catRegister'])->name('catRegister');
+            });
 
         },
         commands: __DIR__ . '/../routes/console.php',
