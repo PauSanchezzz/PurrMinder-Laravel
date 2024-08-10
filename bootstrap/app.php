@@ -49,6 +49,8 @@ return Application::configure(basePath: dirname(__DIR__))
                 Route::get('select_sex', [select_formsController::class, 'select_sex'])->name('select_sex');
                 Route::get('select_personality', [select_formsController::class, 'select_personality'])->name('select_personality');
                 Route::get('select_catHealth', [select_formsController::class, 'select_catHealth'])->name('select_catHealth');
+                Route::get('select_specialCondition', [select_formsController::class, 'select_specialCondition'])->name('select_specialCondition');
+
             });
 
         },

@@ -8,6 +8,7 @@ use App\Models\city;
 use App\Models\Occupation;
 use App\Models\Personality;
 use App\Models\Sex;
+use App\Models\specialCondition;
 use App\Models\TypeDocument;
 use Illuminate\Http\Request;
 
@@ -49,4 +50,8 @@ class select_formsController extends Controller
         return response()->json(['data' => $catHealth], 200);
     }
 
+    public function select_specialCondition(){
+        $specialCondition = SpecialCondition::all();
+        return response()->json(['data' => $specialCondition], 200);
+    }
 }
