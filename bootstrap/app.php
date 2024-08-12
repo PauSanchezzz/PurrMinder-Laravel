@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\catsController;
+use App\Http\Controllers\MedicalController;
 use App\Http\Controllers\select_formsController;
+use App\Http\Controllers\DeathController;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -37,6 +39,8 @@ return Application::configure(basePath: dirname(__DIR__))
                 Route::get('catsAdoption', [CatsController::class, 'catsAdoption'])->name('catsAdoption');
                 Route::get('catsAdopted', [CatsController::class, 'catsAdopted'])->name('catsAdopted');
                 Route::post('catRegister', [CatsController::class, 'catRegister'])->name('catRegister');
+                Route::post('deathRegister', [DeathController::class, 'deathRegister'])->name('deathRegister');
+                Route::post('medicalRegister', [MedicalController::class, 'medicalRegister'])->name('medicalRegister');
             });
             Route::group([
                 'middleware' => 'api',
