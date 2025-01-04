@@ -23,6 +23,7 @@ class Cat extends Model
         'specialCondition_id',
         'catHealth_id',
         'personality_id',
-        'availabilityCat'
+        'availabilityCat',
+        'adoptedCat'
     ];
 }
