@@ -64,8 +64,6 @@ class catsController extends Controller
         return response()->json(['cats' => $cats], 200);
     }
 
-
-
     public function catById($id)
     {
         $catQuery = Cat::select(

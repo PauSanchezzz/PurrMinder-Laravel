@@ -6,6 +6,7 @@ use App\Http\Controllers\catsController;
 use App\Http\Controllers\MedicalController;
 use App\Http\Controllers\select_formsController;
 use App\Http\Controllers\DeathController;
+use App\Http\Controllers\ReinstateController;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -43,10 +44,22 @@ return Application::configure(basePath: dirname(__DIR__))
                 Route::post('catRegister', [CatsController::class, 'catRegister'])->name('catRegister');
                 Route::post('deathRegister', [DeathController::class, 'deathRegister'])->name('deathRegister');
                 Route::post('medicalRegister', [MedicalController::class, 'medicalRegister'])->name('medicalRegister');
+                Route::post('createReinstate', [ReinstateController::class, 'createReinstate'])->name('createReinstate');
+                Route::patch('changeAvailability_Health/{id}', [ReinstateController::class, 'changeAvailability_Health'])->name('changeAvailability_Health');
                 Route::get('allCats', [CatsController::class, 'allCats'])->name('allCats');
                 Route::get('catById/{id}', [CatsController::class, 'catById'])->name('catById');
                 Route::post('findCat', [CatsController::class, 'findCat'])->name('findCat');
                 Route::post('catEdit/{id}', [CatsController::class, 'catEdit'])->name('catEdit');
+                Route::get('deathList', [DeathController::class, 'deathList'])->name('deathList');
+                Route::get('medicalList' , [MedicalController::class, 'medicalList'])->name('medicalList');
+                Route::get('reinstateList' , [ReinstateController::class, 'reinstateList'])->name('reinstateList');
+                Route::patch('updateDeathRegister/{id}' , [DeathController::class, 'updateDeathRegister'])->name('updateDeathRegister');
+                Route::post('updateMedicalRegister/{id}' , [MedicalController::class, 'updateMedicalRegister'])->name('updateMedicalRegister');
+                Route::patch('updateReinstate/{id}' , [ReinstateController::class, 'updateReinstate'])->name('updateReinstate');
+                Route::get('deathById/{id}' , [DeathController::class, 'deathById'])->name('deathById');
+                Route::get('medicalById/{id}', [MedicalController::class, 'medicalById'])->name('medicalById');
+                Route::get('reinstateById/{id}', [ReinstateController::class, 'reinstateById'])->name('reinstateById');
+
 
             });
             Route::group([
@@ -61,6 +74,11 @@ return Application::configure(basePath: dirname(__DIR__))
                 Route::get('select_personality', [select_formsController::class, 'select_personality'])->name('select_personality');
                 Route::get('select_catHealth', [select_formsController::class, 'select_catHealth'])->name('select_catHealth');
                 Route::get('select_specialCondition', [select_formsController::class, 'select_specialCondition'])->name('select_specialCondition');
+                Route::get('select_typeMedicalProcedure', [select_formsController::class, 'select_typeMedicalProcedure'])->name('select_typeMedicalProcedure');
+                Route::get('select_cat', [select_formsController::class, 'select_cat'])->name('select_cat');
+                Route::get('select_reasonOfDeath', [select_formsController::class, 'select_reasonOfDeath'])->name('select_reasonOfDeath');
+                Route::get('select_adoptedCats', [select_formsController::class, 'select_adoptedCats'])->name('select_adoptedCats');
+
             });
             Route::group([
                 'middleware' => 'api',
